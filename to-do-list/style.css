@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: antiquewhite;
+  font: normal 15pt arial;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  padding: 1rem;
+}
+
+.app {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.366);
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  padding: 15px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-theme button {
+  background-color: rgb(238, 194, 137);
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+.btn-theme button:hover {
+  background-color: rgba(43, 40, 40, 0.786);
+}
+
+.conteinerTask {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem;
+}
+
+#task {
+  width: 25rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  padding: 1rem;
+  outline: none;
+}
+
+#addTask {
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(238, 194, 137);
+  color: white;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+& #addTask:hover {
+  background-color: rgba(43, 40, 40, 0.786);
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tasks li {
+  list-style-type: none;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tasks li button {
+  border: none;
+  margin-left: 5px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  color: white;
+  background-color: rgb(238, 194, 137);
+  cursor: pointer;
+  transition: 0.4s;
+}
+.tasks li button:hover {
+  background-color: rgba(43, 40, 40, 0.786);
+}
