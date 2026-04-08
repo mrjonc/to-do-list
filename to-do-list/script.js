@@ -2,31 +2,30 @@ const localStorageName = "to-do-list";
 
 function validateNewTask() {
   let values = JSON.parse(localStorage.getItem(localStorageName)) || [];
-  let inputValue = document.querySelector("#task").value;
+  let inputValue = document.querySelector("#task").value.trim();
   let exists = values.find((x) => x.name == inputValue);
   return !exists ? false : true;
 }
 
 function newTask() {
-  let form = document.querySelector(".conteinerTask");
   let input = document.querySelector("#task");
-
+  let spaceOut = input.value.trim();
   let values;
 
-  if (!input.value) {
+  if (!spaceOut) {
     alert("Digite uma tarefa antes de enviar.");
   } else if (validateNewTask()) {
     alert("Já existe uma tarefa com essa descrição na lista");
   } else {
     values = JSON.parse(localStorage.getItem(localStorageName)) || [];
     values.push({
-      name: input.value,
+      name: spaceOut,
     });
 
     localStorage.setItem(localStorageName, JSON.stringify(values));
+    input.value = "";
   }
 
-  console.log(values);
   showTasks();
 }
 
@@ -51,7 +50,7 @@ function showTasks() {
                     />
                   </svg>
                 </button>
-                <button>
+                <button onclick="deleteTask(${i})">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -66,6 +65,20 @@ function showTasks() {
                   </svg>
                 </button>
               </div></li>`;
+  }
+}
+
+function deleteTask(index) {
+  let confirmation = confirm(
+    "Você tem certeza que deseja apagar essa tarefa? A ação não poderá ser desfeita.",
+  );
+
+  if (confirmation) {
+    values = JSON.parse(localStorage.getItem(localStorageName)) || [];
+    values.splice(index, 1);
+
+    localStorage.setItem(localStorageName, JSON.stringify(values));
+    showTasks();
   }
 }
 
