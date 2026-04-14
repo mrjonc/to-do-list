@@ -21,7 +21,7 @@
             aria-label="Alterar tema escuro/claro"
             title="Clique aqui para mudar o tema"
           >
-            <button>
+            <button id="btn-theme">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -45,14 +45,13 @@
             name="text"
             id="task"
             placeholder="Digite uma nova tarefa..."
-            required
           />
           <button
             id="addTask"
             title="Adicionar uma tarefa na lista"
             aria-label="Adicionar tarefa"
-            onclick="newTask()"
-            type="button"
+            onclick="newTask(event)"
+            type="submit"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
