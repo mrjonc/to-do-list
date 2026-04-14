@@ -1,4 +1,11 @@
 const localStorageName = "to-do-list";
+const body = document.body;
+const savedTheme = localStorage.getItem("theme-preference");
+
+if (savedTheme) {
+  body.classList.remove("light-mode", "dark-mode");
+  body.classList.add(savedTheme);
+}
 
 function validateNewTask() {
   let values = JSON.parse(localStorage.getItem(localStorageName)) || [];
@@ -8,6 +15,8 @@ function validateNewTask() {
 }
 
 function newTask() {
+  if (event) event.preventDefault();
+
   let input = document.querySelector("#task");
   let spaceOut = input.value.trim();
   let values;
@@ -82,4 +91,24 @@ function deleteTask(index) {
   }
 }
 
+function theme() {
+  const btn = document.getElementById("btn-theme");
+
+  if (savedTheme) {
+    body.classList.remove("light-mode", "dark-mode");
+    body.classList.add(savedTheme);
+  }
+
+  btn.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+    body.classList.toggle("light-mode");
+
+    const currentTheme = body.classList.contains("dark-mode")
+      ? "dark-mode"
+      : "light-mode";
+    localStorage.setItem("theme-preference", currentTheme);
+  });
+}
+
+theme();
 showTasks();

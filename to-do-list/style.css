@@ -1,3 +1,4 @@
+/* Configurações Gerais */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,13 +6,23 @@
 }
 
 body {
-  background-color: antiquewhite;
   font: normal 15pt arial;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.4s; /* Suaviza a troca de cor do fundo */
 }
 
+/* Temas do Body */
+body.light-mode {
+  background-color: antiquewhite;
+}
+
+body.dark-mode {
+  background-color: rgb(36, 36, 68);
+}
+
+/* Layout Principal */
 main {
   display: flex;
   justify-content: center;
@@ -24,10 +35,9 @@ main {
 .app {
   background-color: white;
   border-radius: 15px;
-  box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.366);
+  box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 650px;
-  height: auto;
   padding: 15px;
 }
 
@@ -42,20 +52,19 @@ main {
   flex-direction: column;
 }
 
-.btn-theme button {
-  background-color: rgb(238, 194, 137);
+/* Estilização Base dos Botões (Formato e Tamanho) */
+.btn-theme button,
+#addTask,
+.tasks li button {
   border: none;
-  color: white;
   cursor: pointer;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   transition: 0.4s;
 }
-.btn-theme button:hover {
-  background-color: rgba(43, 40, 40, 0.786);
-}
 
+/* Área de Input */
 .conteinerTask {
   display: flex;
   justify-content: center;
@@ -70,10 +79,54 @@ main {
   font-size: 1rem;
   padding: 1rem;
   outline: none;
+  border: 1px solid #ccc;
 }
 
+/* Lista de Tarefas */
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tasks li {
+  list-style-type: none;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+/* --- LÓGICA DE CORES (O segredo da sua dúvida) --- */
+
+/* 1. Cores para Modo Claro (Padrão) */
+.btn-theme button,
+#addTask,
+.tasks li button {
+  background-color: rgb(238, 194, 137); /* Laranja */
+  color: white;
+}
+
+/* 2. Cores para Modo Escuro (Só ativa se o body tiver .dark-mode) */
+body.dark-mode .btn-theme button,
+body.dark-mode #addTask,
+body.dark-mode .tasks li button {
+  background-color: rgb(36, 36, 68); /* Azul Escuro */
+  color: #ffffff;
+}
+
+/* 3. Efeito Hover Geral */
+.btn-theme button:hover,
+#addTask:hover,
+.tasks li button:hover {
+  background-color: rgba(43, 40, 40, 0.786);
+  color: white;
+}
+
+/* Responsividade */
 @media (max-width: 480px) {
-  .containerTask {
+  .conteinerTask {
     padding: 1.5rem 0.5rem;
     gap: 0.5rem;
   }
@@ -85,48 +138,4 @@ main {
   .tasks li {
     font-size: 1.1rem;
   }
-}
-
-#addTask {
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: none;
-  background-color: rgb(238, 194, 137);
-  color: white;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  transition: 0.4s;
-}
-& #addTask:hover {
-  background-color: rgba(43, 40, 40, 0.786);
-}
-
-.tasks {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.tasks li {
-  list-style-type: none;
-  text-transform: capitalize;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.tasks li button {
-  border: none;
-  margin-left: 5px;
-  padding: 5px 10px;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  color: white;
-  background-color: rgb(238, 194, 137);
-  cursor: pointer;
-  transition: 0.4s;
-}
-.tasks li button:hover {
-  background-color: rgba(43, 40, 40, 0.786);
 }
