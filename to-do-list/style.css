@@ -105,8 +105,6 @@ main {
   padding: 5px 0;
 }
 
-/* --- LÓGICA DE CORES (O segredo da sua dúvida) --- */
-
 /* 1. Cores para Modo Claro (Padrão) */
 .btn-theme button,
 #addTask,
