@@ -1,3 +1,14 @@
+:root {
+  --body-light-mode: antiquewhite;
+  --body-dark-mode: rgb(36, 36, 68);
+  --app-light-mode: white;
+  --app-dark-mode: rgb(74, 74, 116);
+  --btn-light-mode: rgb(238, 194, 137);
+  --btn-light-mode-hover: rgba(43, 40, 40, 0.786);
+  --btn-dark-mode: rgb(58, 58, 102);
+  --btn-dark-mode-hover: rgb(18, 18, 36);
+}
+
 /* Configurações Gerais */
 * {
   box-sizing: border-box;
@@ -6,20 +17,20 @@
 }
 
 body {
-  font: normal 15pt arial;
+  font: normal 15pt Georgia;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  transition: background-color 0.4s; /* Suaviza a troca de cor do fundo */
+  transition: 0.4s; /* Suaviza a troca de cor do fundo */
 }
 
 /* Temas do Body */
 body.light-mode {
-  background-color: antiquewhite;
+  background-color: var(--body-light-mode);
 }
 
 body.dark-mode {
-  background-color: rgb(36, 36, 68);
+  background-color: var(--body-dark-mode);
 }
 
 /* Layout Principal */
@@ -33,12 +44,19 @@ main {
 }
 
 .app {
-  background-color: white;
+  background-color: var(--app-light-mode);
   border-radius: 15px;
   box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 650px;
   padding: 15px;
+}
+
+body.dark-mode .app,
+body.dark-mode #task {
+  background-color: var(--app-dark-mode);
+  color: white;
+  transition: 0.4s;
 }
 
 .header {
@@ -109,7 +127,7 @@ main {
 .btn-theme button,
 #addTask,
 .tasks li button {
-  background-color: rgb(238, 194, 137); /* Laranja */
+  background-color: var(--btn-light-mode);
   color: white;
 }
 
@@ -117,32 +135,59 @@ main {
 body.dark-mode .btn-theme button,
 body.dark-mode #addTask,
 body.dark-mode .tasks li button {
-  background-color: rgb(36, 36, 68); /* Azul Escuro */
+  background-color: var(--btn-dark-mode);
   color: #f5f5f5;
 }
 
-/* 3. Efeito Hover Geral */
+/* 3. Efeito Hover do tema claro */
 .btn-theme button:hover,
 #addTask:hover,
 .tasks li button:hover {
-  background-color: rgba(43, 40, 40, 0.786);
+  background-color: var(--btn-light-mode-hover);
   color: white;
 }
 
+/* 4. Efeito Hover do tema escuro */
+body.dark-mode .btn-theme button:hover,
+body.dark-mode #addTask:hover,
+body.dark-mode .tasks li button:hover {
+  background-color: var(--btn-dark-mode-hover);
+  transition: 0.4s;
+}
+
 .modal-footer .btn-primary {
-  background-color: rgb(238, 194, 137) !important;
-  border: none !important;
-  color: white !important;
+  background-color: var(--btn-light-mode);
+  border: none;
+  color: white;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: var(--btn-light-mode-hover);
+  transition: 0.4s;
 }
 
 body.dark-mode .modal-footer .btn-primary {
-  background-color: rgb(36, 36, 68) !important;
-  border: none !important;
+  background-color: var(--btn-dark-mode);
+}
+
+body.dark-mode .modal-footer .btn-primary:hover {
+  background-color: var(--btn-dark-mode-hover);
+  transition: 0.4s;
+}
+
+body.dark-mode .modal-content {
+  background-color: var(--app-dark-mode);
+  border: none;
+  color: white;
 }
 
 body.dark-mode .modal-footer .btn-secondary {
-  background-color: #333;
+  background-color: #4b4949;
   border: none;
+}
+
+body.dark-mode .modal-footer .btn-secondary:hover {
+  background-color: #3f3d3d;
 }
 
 /* Responsividade */
