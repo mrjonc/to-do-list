@@ -99,6 +99,7 @@ body.light-mode #task {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .btn-group {
@@ -223,5 +224,12 @@ body.dark-mode .modal-footer .btn-secondary:hover {
 
   .tasks li {
     font-size: 1.1rem;
+  }
+
+  .btn-theme button,
+  #addTask,
+  .tasks li button {
+    width: 45px;
+    height: 45px;
   }
 }
