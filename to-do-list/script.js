@@ -98,6 +98,15 @@ function saveEdit() {
   let newValue = document.querySelector("#editTaskInput").value.trim();
 
   if (newValue) {
+    const taskExists = values.some(
+      (task, i) =>
+        task.name.toLowerCase() === newValue.toLowerCase() && i != index,
+    );
+
+    if (taskExists) {
+      alert("Já existe uma tarefa com esta descrição.");
+      return;
+    }
     values[index].name = newValue;
     localStorage.setItem(localStorageName, JSON.stringify(values));
 
