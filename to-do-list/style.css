@@ -56,7 +56,23 @@ body.dark-mode .app,
 body.dark-mode #task {
   background-color: var(--app-dark-mode);
   color: white;
-  transition: 0.4s;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+body.dark-mode input::placeholder {
+  color: white;
+  transition: color 0.4s ease;
+}
+
+body.light-mode .app,
+body.light-mode #task {
+  background-color: var(--app-light-mode);
+  color: black;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }
 
 .header {
@@ -112,6 +128,10 @@ body.dark-mode #task {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  list-style: none;
 }
 
 .tasks li {

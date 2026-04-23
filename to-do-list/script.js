@@ -35,6 +35,11 @@ function showTasks() {
   let values = JSON.parse(localStorage.getItem(localStorageName)) || [];
   list.innerHTML = "";
 
+  if (values.length === 0) {
+    list.innerHTML = `<p style="text-align: center; width: 100%; margin: 20px 0; opacity: 0.5">Lista vazia. Adicione uma tarefa.</p>`;
+    return;
+  }
+
   values.forEach((data, index) => {
     list.innerHTML += `
       <li>
